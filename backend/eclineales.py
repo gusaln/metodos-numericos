@@ -2,29 +2,15 @@
 Modulo de resolución de ecuaciones lineales.
 
 
-Las matrices se expresan como listas de filas
+Las matrices se expresan como listas de filas.
 """
 
 
-def vadd(x: list, y: list):
-    return (x_i + y_i for x_i, y_i in zip(x, y))
+from vectores import vadd, vprod_k, vprod_dot
 
-def vsub(x: list, y: list):
-    return (x_i - y_i for x_i, y_i in zip(x, y))
 
-def vprod_dot(x: list, y: list) -> float:
-    return sum((x_i * y_i for x_i, y_i in zip(x, y)), 0.0)
-
-def vprod_k(k, x: list):
-    return (k * x_i for x_i in x)
-
-def mprod_cross(A, x):
-    if len(A[0]) != x:
-        raise ValueError("")
-    
-    return (vprod_dot(a_x, x) for a_x in A)
-
-def gauss(A, v):
+def calcular_gauss(A, v):
+    """Calcula la solución de un sistema de ecuaciones utilizando la eliminación Gaussiana"""
     A_respuesta = list(A)
     v_respuesta = list(v)
 
@@ -49,20 +35,19 @@ def gauss(A, v):
         x = 2 * incognitas[-i]
         incognitas[-i] = x - vprod_dot(A_respuesta[-i], incognitas)
 
-
     return A_respuesta, v_respuesta, incognitas
 
 
 if __name__ == '__main__':
     from pprint import pprint
 
-    A, v, r = gauss(
+    A, v, r = calcular_gauss(
         [
             [1, 1, -1],
             [0, 1, 3],
             [-1, 0, -2],
         ],
-        [9,3,2],
+        [9, 3, 2],
     )
 
     pprint(A)
