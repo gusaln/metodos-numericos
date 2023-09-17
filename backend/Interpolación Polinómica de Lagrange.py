@@ -1,3 +1,6 @@
+"""
+Modulo de resolución de interpolación interpolación polinómica de Lagrange para estimar el valor de y en x_interp.
+"""
 import numpy as np
 
 def lagrange_interpolation(x, y, x_interp):
