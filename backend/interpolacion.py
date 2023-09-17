@@ -1,7 +1,6 @@
 """
-Modulo de resolución de interpolación interpolación polinómica de Lagrange para estimar el valor de y en x_interp.
+Modulo de resolución de interpolación polinómica de Lagrange para estimar el valor de y en x_interp.
 """
-import numpy as np
 
 def lagrange_interpolation(x, y, x_interp):
     """
@@ -30,7 +29,6 @@ def lagrange_interpolation(x, y, x_interp):
     
     return y_interp
   
-#Requisito, instalar numpy desde la terminal de windows con el siguiente comando => pip install numpy
 # Ejemplo de como usar el algoritmo: => Descomentar a partir de la siguiente línea con ctrl+F4 para probar funcionalidad
 ##
 ### Datos conocidos
