@@ -1,6 +1,22 @@
 """
 Modulo de operaciones vectoriales.
 """
+from random import uniform, randint
+
+
+def vrandom(n):
+    """Genera un vector aleatorio con `n` elementos"""
+    return [uniform(-10, 10) for _ in range(n)]
+
+
+def mrandom(a, b=None):
+    """Genera una matriz aleatorio con `a` columnas y `b` filas.
+
+    Si :param:`b` es `None`, se realiza una matriz cuadrada.
+    """
+    if b is None:
+        b = a
+    return [vrandom(a) for _ in range(b)]
 
 
 def vadd(x: list, y: list):
