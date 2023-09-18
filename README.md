@@ -20,6 +20,9 @@ En este proyecto se provee la solución a distintos problemas usando métodos nu
 
 El servidor se iniciará en el puerto `8000`.
 
+### Front-end
+
+El front-end de la aplicacion se encuentra disponible en el repositorio de [Gauss App](https://github.com/JAfricanoT/gaussapp-front).
 
 ## Status
 
