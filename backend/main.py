@@ -157,10 +157,10 @@ async def solucionar_interpolacion(random: bool = False):
     x0 = 1.5
 
     if random:
-        n = rng.randint(2, 10)
-        x = generar_vector(n)
+        n = rng.randint(3, 10)
+        x = sorted(generar_vector(n))
         y = generar_vector(n)
-        x0 = rng.randint(min(x), max(x))
+        x0 = rng.uniform(min(x), max(x))
 
     y0 = lagrange_interpolation(x, y, x0)
 
