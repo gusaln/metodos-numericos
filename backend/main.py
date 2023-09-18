@@ -109,9 +109,8 @@ async def solucionar_autovalores(random: bool = False):
     ]
 
     if random:
-        a = rng.randint(2, 6)
-        b = rng.randint(2, 6)
-        matriz = generar_matriz(a, b)
+        n = rng.randint(2, 6)
+        matriz = generar_matriz(n)
 
     solucion = calcular_autovalor(matriz)
 

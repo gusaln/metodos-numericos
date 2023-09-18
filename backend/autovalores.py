@@ -12,6 +12,8 @@ from fastapi.logger import logger
 def calcular_autovalor(A):
     """Calcula el autovalor de una matriz usando el método de las potencias"""
     x, y = len(A[0]), len(A)
+    if x != y:
+        raise ValueError("La matriz no es cuadrada.")
 
     v = [None] * x
 
@@ -20,7 +22,7 @@ def calcular_autovalor(A):
 
     for i in range(0, 8):
         p = max(map(abs, v))
-        b = vprod_k(1/p, v)
+        b = list(vprod_k(1/p, v))
         v = list(mprod_cross(A, b))
 
     return max(map(abs, v))
