@@ -1,0 +1,25 @@
+import random
+def generar_vector(longitud):
+    vector = []
+    for i in range(longitud):
+        vector.append(random.randint(0, 1))
+    return vector
+
+def generar_matriz(filas, columnas):
+    matriz = []
+    for i in range(filas):
+        fila = generar_vector(columnas)
+        matriz.append(fila)
+    return matriz
+
+longitud = int(input("Ingrese la longitud del vector: "))
+filas = int(input("Ingrese el número de filas de la matriz: "))
+columnas = int(input("Ingrese el número de columnas de la matriz: "))
+
+vector = generar_vector(longitud)
+matriz = generar_matriz(filas, columnas)
+
+print("Vector:", vector)
+print("Matriz:")
+for fila in matriz:
+    print(fila)
