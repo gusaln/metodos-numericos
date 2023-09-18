@@ -20,9 +20,6 @@ En este proyecto se provee la solución a distintos problemas usando métodos nu
 
 El servidor se iniciará en el puerto `8000`.
 
-### Front-end
-
-Por implementar
 
 ## Status
 
