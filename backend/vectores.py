@@ -1,22 +1,30 @@
 """
 Modulo de operaciones vectoriales.
 """
-from random import uniform, randint
+import random
 
 
-def vrandom(n):
+def generar_vector(n):
     """Genera un vector aleatorio con `n` elementos"""
-    return [uniform(-10, 10) for _ in range(n)]
+    vector = []
+    for _ in range(n):
+        vector.append(random.uniform(-10, 10))
+    return vector
 
 
-def mrandom(a, b=None):
+def generar_matriz(a, b=None):
     """Genera una matriz aleatorio con `a` columnas y `b` filas.
 
     Si :param:`b` es `None`, se realiza una matriz cuadrada.
     """
     if b is None:
         b = a
-    return [vrandom(a) for _ in range(b)]
+
+    matriz = []
+    for _ in range(b):
+        fila = generar_vector(a)
+        matriz.append(fila)
+    return matriz
 
 
 def vadd(x: list, y: list):

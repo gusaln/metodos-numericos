@@ -15,6 +15,7 @@ def calcular_gauss(A, v):
     v_respuesta = list(v)
 
     n = len(A)
+    # Este loop vuelve los elementos de la diagonal 1
     for i in range(n):
         a_i = A_respuesta[i]
         a_ii = a_i[i]
@@ -30,6 +31,7 @@ def calcular_gauss(A, v):
     A_respuesta[k] = list(vprod_k(factor, A_respuesta[k]))
     v_respuesta[k] = factor * v_respuesta[k]
 
+    # Calculamos los valores de cada incognita desde la última fila hacia la primera.
     incognitas = list(v_respuesta)
     for i in range(2, n+1):
         x = 2 * incognitas[-i]

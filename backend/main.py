@@ -1,11 +1,12 @@
 from fastapi import FastAPI, Form, Request
 import sys
 import os
+import random as rng
 from typing import Annotated, List
 
 from autovalores import calcular_autovalor
 from interpolacion import lagrange_interpolation
-from vectores import mrandom, vrandom, randint
+from vectores import generar_matriz, generar_vector
 from eclineales import calcular_gauss
 
 sys.path.append(os.path.dirname(__file__))
@@ -34,11 +35,12 @@ async def solucionar_eclineal(random: bool = False):
     vector = [9, 3, 2]
 
     if random:
-        n = randint(2, 6)
-        matriz = mrandom(n)
-        vector = vrandom(n)
+        n = rng.randint(2, 6)
+        matriz = generar_matriz(n)
+        vector = generar_vector(n)
 
-    matriz_reducida, vector_reducida, incognitas = calcular_gauss(matriz, vector)
+    matriz_reducida, vector_reducida, incognitas = calcular_gauss(
+        matriz, vector)
 
     return {
         "problema": {
@@ -58,12 +60,13 @@ async def solucionar_eclineal_del_usuario(request: Request):
     """
     :param request: Representa el request.
     """
-        
+
     # Debemos interpretar los parámetros del request
     data = await request.json()
     matriz = data["matriz"]
     vector = data["vector"]
-    matriz_reducida, vector_reducida, incognitas = calcular_gauss(matriz, vector)
+    matriz_reducida, vector_reducida, incognitas = calcular_gauss(
+        matriz, vector)
 
     return {
         "problema": {
@@ -90,9 +93,9 @@ async def solucionar_autovalores(random: bool = False):
     ]
 
     if random:
-        a = randint(2, 6)
-        b = randint(2, 6)
-        matriz = mrandom(a, b)
+        a = rng.randint(2, 6)
+        b = rng.randint(2, 6)
+        matriz = generar_matriz(a, b)
 
     solucion = calcular_autovalor(matriz)
 
@@ -111,7 +114,7 @@ async def solucionar_autovalores_del_usuario(request: Request):
     """
     :param request: Representa el request.
     """
-        
+
     # Debemos interpretar los parámetros del request
     data = await request.json()
     matriz = data["matriz"]
@@ -139,10 +142,10 @@ async def solucionar_interpolacion(random: bool = False):
     x0 = 1.5
 
     if random:
-        n = randint(2, 10)
-        x = vrandom(n)
-        y = vrandom(n)
-        x0 = randint(min(x), max(x))
+        n = rng.randint(2, 10)
+        x = generar_vector(n)
+        y = generar_vector(n)
+        x0 = rng.randint(min(x), max(x))
 
     y0 = lagrange_interpolation(x, y, x0)
 
@@ -163,14 +166,13 @@ async def solucionar_interpolacion_del_usuario(request: Request):
     """
     :param request: Representa el request.
     """
-        
+
     # Debemos interpretar los parámetros del request
     data = await request.json()
 
     x = data["x"]
     y = data["y"]
-    x0 =data["x0"]
-
+    x0 = data["x0"]
 
     y0 = lagrange_interpolation(x, y, x0)
 
